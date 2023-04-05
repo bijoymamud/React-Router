@@ -1,8 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Post = ({ post }) => {
     const { id, title, body } = post;
+    const navigator = useNavigate()
+
+    const handleNavigation = () => {
+        navigator(`/post/${id}`)
+
+    }
     return (
         <div className='single-post'>
             <h3>ID: {id}</h3>
@@ -11,6 +17,11 @@ const Post = ({ post }) => {
             <Link to={`/post/${id}`}>
                 <button>Post Details</button>
             </Link>
+
+
+
+            <button onClick={handleNavigation}>With Button Handler</button>
+
         </div>
     );
 };
